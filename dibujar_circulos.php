@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 //para los circulos se hacen en una tabla
 //azul rojo verde amarillo naranja rosa morado gris
 
@@ -13,6 +13,7 @@ $colores = array(
     "morado"=> "#800080",
     "gris"=> "#808080"
 );
+    $combinacion_inicial = array();
 
 function dibujar_circulos($colores_inicial) {
 
@@ -30,7 +31,7 @@ function dibujar_circulos($colores_inicial) {
     echo '<h1>Bienvenido al Simon</h1>';
     echo '<table>';
         echo '<tr>';
-    // svg para que se muestrn los círculos
+    // svg para que se muestran los círculos
     
     
     for ($i = 0; $i < $nCirculos; $i++) {
@@ -38,6 +39,7 @@ function dibujar_circulos($colores_inicial) {
            echo '<svg height="200" width="200">';   
             $indiceAleatorio = array_rand($coloresDef);
             $colorAleatorio = $coloresDef[$indiceAleatorio];
+            $combinacion_inicial[] = $colorAleatorio;
             echo "<circle fill='" . $colorAleatorio . "' cx='50' cy='50' r='40'></circle>";
             echo '</svg>';
             echo '</td>';
@@ -47,6 +49,8 @@ function dibujar_circulos($colores_inicial) {
         echo '<form method="POST" action="circulos_negro.php">';
         echo '<button type="submit" name="jugar">Jugar</button>';
         echo '</form>';
+        $_SESSION['combinacion_inicial'] = $combinacion_inicial;
+        var_dump($_SESSION['combinacion_inicial']);
 
     }
     
