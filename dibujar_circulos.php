@@ -3,9 +3,6 @@
 //para los circulos se hacen en una tabla
 //azul rojo verde amarillo naranja rosa morado gris
 
-
-
-
 $colores = array(
     'azul'=> "#0000FF",
     'rojo'=> "#FF0000",
@@ -17,7 +14,7 @@ $colores = array(
     "gris"=> "#808080"
 );
 
-function dibujar_circulos($colores) {
+function dibujar_circulos($colores_inicial) {
 
     if (isset($_POST['nCirculos'])) {
     $nCirculos = $_POST['nCirculos'];
@@ -27,7 +24,7 @@ function dibujar_circulos($colores) {
     } 
 
     // convertimos las claves otro array para poder acceder a los colores por posicion
-    $nuevosColores = array_values($colores);
+    $nuevosColores = array_values($colores_inicial);
     $coloresDef=array_slice($nuevosColores, 0, $nColores);
 
     echo '<h1>Bienvenido al Simon</h1>';
@@ -47,7 +44,7 @@ function dibujar_circulos($colores) {
         }
             echo '</tr>';
         echo '</table>';
-        echo '<form method="POST" action="index.php">';
+        echo '<form method="POST" action="circulos_negro.php">';
         echo '<button type="submit" name="jugar">Jugar</button>';
         echo '</form>';
 
