@@ -1,5 +1,3 @@
-//esto es circulos_negros.php
-
 <?php
 session_start();
 

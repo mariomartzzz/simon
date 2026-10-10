@@ -1,5 +1,3 @@
-//este es dibujar_circulos.php
-
 <?php
 session_start();
 //para los circulos se hacen en una tabla
