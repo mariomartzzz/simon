@@ -1,19 +1,22 @@
+//esto es circulos_negros.php
+
 <?php
+session_start();
+
  include 'dibujar_circulos.php';
     $colores = array(
-        'negro'=> "#000000",
-        'negro'=> "#000000",
-        'negro'=> "#000000",
-        'negro'=> "#000000",
-        'negro'=> "#000000",
-        'negro'=> "#000000",
-        'negro'=> "#000000",
-        'negro'=> "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
     );
 
-    //REVISAR QUE NO VA NO SE PQ
+echo '<h1>Círculos Negros</h1>';
 
-    echo '<h1>Círculos Negros</h1>';
-    dibujar_circulos($colores);
-
+dibujar_circulos($colores);
+?>
 ?>

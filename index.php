@@ -1,3 +1,4 @@
+//este es index.php
 <!doctype html>
 <html lang="en">
   <head>

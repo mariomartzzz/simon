@@ -1,7 +1,17 @@
+//este es dibujar_circulos.php
+
 <?php
 session_start();
 //para los circulos se hacen en una tabla
 //azul rojo verde amarillo naranja rosa morado gris
+
+if (isset($_POST['nCirculos'])) {
+    $_SESSION['nCirculos'] = $_POST['nCirculos'];
+}
+if (isset($_POST['nColores'])) {
+    $_SESSION['nColores'] = $_POST['nColores'];
+}
+            
 
 $colores = array(
     'azul'=> "#0000FF",
@@ -17,12 +27,10 @@ $colores = array(
 
 function dibujar_circulos($colores_inicial) {
 
-    if (isset($_POST['nCirculos'])) {
-    $nCirculos = $_POST['nCirculos'];
-    }  
-    if (isset($_POST['nColores'])) {
-        $nColores = $_POST['nColores'];
-    } 
+                    //if abreviado (true/false, acción, else)
+$nCirculos = isset($_SESSION['nCirculos']) ? $_SESSION['nCirculos'] : 4;
+$nColores = isset($_SESSION['nColores']) ? $_SESSION['nColores'] : 2;
+
 
     // convertimos las claves otro array para poder acceder a los colores por posicion
     $nuevosColores = array_values($colores_inicial);
