@@ -17,4 +17,3 @@ echo '<h1>Círculos Negros</h1>';
 
 dibujar_circulos($colores);
 ?>
-?>
