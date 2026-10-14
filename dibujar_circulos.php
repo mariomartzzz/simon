@@ -21,7 +21,10 @@ $colores = array(
     "morado"=> "#800080",
     "gris"=> "#808080"
 );
-    $combinacion_inicial = array();
+    $combinacion_colores = array();
+
+    $_SESSION['paleta_nombres'] = array_slice(array_keys($colores), 0, $_SESSION['nColores']);
+    $_SESSION['paleta_hexa'] = array_slice(array_values($colores), 0, $_SESSION['nColores']);
 
 function dibujar_circulos($colores_inicial) {
 
@@ -44,18 +47,18 @@ $nColores = isset($_SESSION['nColores']) ? $_SESSION['nColores'] : 2;
            echo '<svg height="200" width="200">';   
             $indiceAleatorio = array_rand($coloresDef);
             $colorAleatorio = $coloresDef[$indiceAleatorio];
-            $combinacion_inicial[] = $colorAleatorio;
-            echo "<circle fill='" . $colorAleatorio . "' cx='50' cy='50' r='40'></circle>";
+            $combinacion_colores[] = $colorAleatorio;
+            echo "<circle stroke='black' stroke-width='2' fill='" . $colorAleatorio . "' cx='50' cy='50' r='40'></circle>";
             echo '</svg>';
             echo '</td>';
         }
             echo '</tr>';
         echo '</table>';
-        echo '<form method="POST" action="circulos_negro.php">';
-        echo '<button type="submit" name="jugar">Jugar</button>';
-        echo '</form>';
-    return $combinacion_inicial;
+        
+    return $combinacion_colores;
     }
+
+    
     
     
 

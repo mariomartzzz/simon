@@ -13,5 +13,8 @@
     $_SESSION['combinacion_inicial'] =dibujar_circulos($colores);
     var_dump($_SESSION['combinacion_inicial']);
     ?>
+    <form method="POST" action="circulos_negro.php">
+        <button type="submit" name="jugar">Jugar</button>
+    </form>
 </body>
 </html>
