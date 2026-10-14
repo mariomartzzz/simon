@@ -6,7 +6,8 @@
     <title>Simon</title>
   </head>
   <body>
-      <form method="POST" action="dibujar_circulos.php">
+    <h1>Bienvenido al Simon</h1>
+      <form method="POST" action="jugar.php">
       <label for="nCirculos">Nº de cículos</label>
       <input name="nCirculos" type="text" min="4" max="8" />
       <label for="nColores">Nº de colores</label>

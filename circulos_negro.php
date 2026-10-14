@@ -1,5 +1,4 @@
 <?php
-session_start();
 
  include 'dibujar_circulos.php';
     $colores = array(
@@ -16,4 +15,5 @@ session_start();
 echo '<h1>Círculos Negros</h1>';
 
 dibujar_circulos($colores);
+var_dump($_SESSION['combinacion_inicial']);
 ?>

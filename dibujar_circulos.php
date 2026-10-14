@@ -34,7 +34,6 @@ $nColores = isset($_SESSION['nColores']) ? $_SESSION['nColores'] : 2;
     $nuevosColores = array_values($colores_inicial);
     $coloresDef=array_slice($nuevosColores, 0, $nColores);
 
-    echo '<h1>Bienvenido al Simon</h1>';
     echo '<table>';
         echo '<tr>';
     // svg para que se muestran los círculos
@@ -55,15 +54,12 @@ $nColores = isset($_SESSION['nColores']) ? $_SESSION['nColores'] : 2;
         echo '<form method="POST" action="circulos_negro.php">';
         echo '<button type="submit" name="jugar">Jugar</button>';
         echo '</form>';
-        $_SESSION['combinacion_inicial'] = $combinacion_inicial;
-        var_dump($_SESSION['combinacion_inicial']);
-
+    return $combinacion_inicial;
     }
     
     
 
 
-dibujar_circulos($colores);
 
 
 ?>
