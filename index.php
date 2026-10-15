@@ -9,9 +9,9 @@
     <h1>Bienvenido al Simon</h1>
       <form method="POST" action="jugar.php">
       <label for="nCirculos">Nº de cículos</label>
-      <input name="nCirculos" type="text" min="4" max="8" />
+      <input name="nCirculos" type="number" min="4" max="8" />
       <label for="nColores">Nº de colores</label>
-      <input name="nColores" type="text" min="2" max="8" />
+      <input name="nColores" type="number" min="2" max="8" />
       <button type="submit">Jugar</button>
     </form>
   </body>

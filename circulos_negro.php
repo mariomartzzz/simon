@@ -41,4 +41,3 @@ dibujar_circulos($colores);
     </form>
 </body>
 </html>
-
