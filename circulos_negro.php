@@ -21,13 +21,11 @@ if (isset($_POST['color_seleccionado'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Círculos Negros</title>
+    <title>Combinación de Círculos</title>
 </head>
 <body>
     <?php
-    echo '$_SESSION[nCirculos]: ' . $_SESSION['nCirculos'] . '<br>';
-    echo '$_SESSION[nColores]: ' . $_SESSION['nColores'] . '<br>';
-    echo '<h1>Círculos Negros</h1>';
+    echo '<h1>Introduzca su combinación</h1>';
 
     // Dibujamos los círculos del usuario
     dibujar_circulos($_SESSION['circulos_pintar']);
@@ -48,10 +46,6 @@ if (isset($_POST['color_seleccionado'])) {
     </table>
     
     <?php 
-    echo "<pre>";
-    var_dump($_SESSION['circulos_pintar']); 
-    echo "Índice actual x: " . $_SESSION['x'];
-    echo "</pre>";
     if ($_SESSION['x'] >= $_SESSION['nCirculos']) {
         echo '<br><form method="POST" action="comprobacion.php">
                 <button type="submit" style="padding: 15px 30px; font-size: 16px; cursor: pointer;">Comprobar Resultado</button>
