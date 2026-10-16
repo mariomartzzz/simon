@@ -1,7 +1,6 @@
 <?php   
 include 'dibujar_circulos.php';
 
-// Definimos la paleta base de colores
 $colores = array(
     'azul'     => "#0000FF",
     'rojo'     => "#FF0000",

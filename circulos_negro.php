@@ -27,7 +27,6 @@ if (isset($_POST['color_seleccionado'])) {
     <?php
     echo '<h1>Introduzca su combinación</h1>';
 
-    // Dibujamos los círculos del usuario
     dibujar_circulos($_SESSION['circulos_pintar']);
     ?>
     
