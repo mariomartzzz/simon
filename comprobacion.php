@@ -16,7 +16,7 @@ include 'dibujar_circulos.php';
 
     for ($i = 0; $i < $_SESSION['nCirculos']; $i++) {
         if ($_SESSION['combinacion_inicial'][$i] === $_SESSION['circulos_pintar'][$i]) {
-            $aciertosExactos++;
+            $aciertosExactos++; 
         }
     }
 
