@@ -11,7 +11,7 @@
       <label for="nCirculos">Nº de cículos</label>
       <input name="nCirculos" type="number" min="4" max="8" />
       <label for="nColores">Nº de colores</label>
-      <input name="nColores" type="number" min="2" max="8" />
+      <input name="nColores" type="number" min="4" max="8" />
       <button type="submit">Jugar</button>
     </form>
   </body>

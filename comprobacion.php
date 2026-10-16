@@ -27,7 +27,7 @@ include 'dibujar_circulos.php';
     dibujar_circulos($_SESSION['combinacion_inicial']);
 
     if ($aciertosExactos == $_SESSION['nCirculos']) {
-        echo "<p>Has ganado</p>";
+        echo "<h2>Has ganado</h2>";
     } else {
         echo "<p>Aciertos: " . $aciertosExactos . "</p>";
     }
