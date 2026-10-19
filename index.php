@@ -1,3 +1,31 @@
+<?php
+
+$nombreCookie1='num_circulos';
+$valorCookie1=7;
+$tiempoExpiracion=3600;
+setcookie($nombreCookie1,$valorCookie1,[
+ 'expires' => $tiempoExpiracion,
+ 'path' => '/',
+ 'domain' => 'localhost',
+ 'secure' => false, // Poner true en producción con HTTPS
+ 'httponly' => true, // Inaccesible desde JavaScript (Protección Anti-XSS)
+ 'samesite' => 'Lax' // Protección Anti-CSRF
+]);
+ 
+
+$nombreCookie2='color_cookie';
+$valorCookie2='#ff0000';
+
+setcookie($nombreCookie2,$valorCookie2,[
+ 'expires' => $tiempoExpiracion,
+ 'path' => '/',
+ 'domain' => 'localhost',
+ 'secure' => false, // Poner true en producción con HTTPS
+ 'httponly' => true, // Inaccesible desde JavaScript (Protección Anti-XSS)
+ 'samesite' => 'Lax' // Protección Anti-CSRF
+])
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,10 +37,13 @@
     <h1>Bienvenido al Simon</h1>
       <form method="POST" action="jugar.php">
       <label for="nCirculos">Nº de cículos</label>
-      <input name="nCirculos" type="number" min="4" max="8" />
+      <input name="nCirculos" type="number" min="4" max="8" value="7" />
       <label for="nColores">Nº de colores</label>
       <input name="nColores" type="number" min="4" max="8" />
       <button type="submit">Jugar</button>
     </form>
+    <?php
+    echo "El valor de la cookie " . $nombreCookie1 . " es: " . $_COOKIE[$nombreCookie1];
+    ?>
   </body>
 </html>
