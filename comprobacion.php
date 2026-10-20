@@ -1,4 +1,6 @@
 <?php
+$color_fondo=$_COOKIE['color_fondo'];
+
 include 'dibujar_circulos.php';
 ?>
 <!DOCTYPE html>
@@ -7,7 +9,7 @@ include 'dibujar_circulos.php';
     <meta charset="UTF-8">
     <title>Comprobación</title>
 </head>
-<body>
+<body style="background-color: <?=$_COOKIE['color_fondo'];?>;">
     <h1>Resultado</h1>
 
     <?php

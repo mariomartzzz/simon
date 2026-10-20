@@ -23,7 +23,7 @@ if (isset($_POST['color_seleccionado'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Combinación de Círculos</title>
 </head>
-<body>
+<body style="background-color: <?=$_COOKIE['color_fondo'];?>;">
     <?php
     echo '<h1>Introduzca su combinación</h1>';
 

@@ -1,4 +1,26 @@
 <?php   
+$tiempoExpiracion=3600*24;
+
+
+if(!empty($_POST['colorFondo'])){
+if ($_POST['colorFondo']) {
+    
+    setcookie('color_fondo', $_POST['colorFondo'], [
+    'expires' =>time()+$tiempoExpiracion,
+    'path' => '/',
+    'domain' => 'localhost',
+    'secure' => false, // Poner true en producción con HTTPS
+    'httponly' => true, // Inaccesible desde JavaScript (Protección Anti-XSS)
+    'samesite' => 'Lax' // Protección Anti-CSRF
+    ]);
+    $_COOKIE['color_fondo'] = $_POST['colorFondo'];
+    }
+}
+    
+
+
+
+
 include 'dibujar_circulos.php';
 
 $colores = array(
@@ -37,7 +59,7 @@ $_SESSION['combinacion_inicial'] = $combinacion_colores;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Combinación Inicial</title>
 </head>
-<body>
+<body style="background-color: <?=$_COOKIE['color_fondo'];?>;">
     <h1>Combinación Inicial</h1>
     <?php
 
