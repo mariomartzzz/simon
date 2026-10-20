@@ -1,10 +1,8 @@
 <?php   
 $tiempoExpiracion=3600*24;
 
-
 if(!empty($_POST['colorFondo'])){
 if ($_POST['colorFondo']) {
-    
     setcookie('color_fondo', $_POST['colorFondo'], [
     'expires' =>time()+$tiempoExpiracion,
     'path' => '/',
@@ -16,10 +14,6 @@ if ($_POST['colorFondo']) {
     $_COOKIE['color_fondo'] = $_POST['colorFondo'];
     }
 }
-    
-
-
-
 
 include 'dibujar_circulos.php';
 
