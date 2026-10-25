@@ -30,9 +30,12 @@ setcookie($nombreCookie1,$valorCookie1,[
       <label for="nColores">Nº de colores</label>
       <input name="nColores" type="number" min="4" max="8" />
       <label for="colorFondo">Color de fondo:</label>
-      <input name="colorFondo"></input>
+      <input name="colorFondo" value="white"></input>
       <br><br>
       <button type="submit">Jugar</button>
+    </form>
+    <form method="get" action="acceso.php">
+      <button type="submit">Salir</button>
     </form>
   </body>
 </html>
