@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($claveNueva === $claveChk) {
         $host = 'localhost';
-        $dbname = 'agenda';
+        $dbname = 'bdsimon';
         $db_usuario = 'root';
         $clave = '';
 

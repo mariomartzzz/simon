@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
     //params para conectarse a la base de datos
     $host='localhost';
-    $dbname='agenda';
+    $dbname='bdsimon';
     $db_usuario='root';
     $clave='';
 
@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
         if ($fila && $contrasenia === $fila['Clave']) {
             $_SESSION['usuario'] = $fila['Nombre'];
-            header("Location: index.php");
+            header("Location: seguridad.php");
         } else {
             echo 'Acceso invalido';
         }
