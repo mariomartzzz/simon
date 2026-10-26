@@ -1,7 +1,4 @@
 <?php
-
-//acordarse de poner el auto_increment en la base de datos
-
 session_start();
 
 if($_SERVER['REQUEST_METHOD']=='POST') {  
