@@ -39,5 +39,9 @@ include 'dibujar_circulos.php';
     <form method="GET" action="jugar.php">
         <button type="submit">Jugar otra vez</button>
     </form>
+    <form method="GET" action="acceso.php">
+        <button type="submit">Cerrar sesión</button>
+    </form>
+
 </body>
 </html>
