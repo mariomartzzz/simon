@@ -1,5 +1,7 @@
 <?php
+    if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
 
 function dibujar_circulos($colores_inicial) {
     echo '<table style="border-collapse: collapse; display: inline-block;">';

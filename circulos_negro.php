@@ -1,13 +1,13 @@
 <?php
 include 'dibujar_circulos.php';
 
-// Inicializar el array de círculos negros si no existe
+// si no existe se inicializa
 if (!isset($_SESSION['circulos_pintar'])) {
     $_SESSION['circulos_pintar'] = array_fill(0, $_SESSION['nCirculos'], "#000000");
     $_SESSION['x'] = 0;
 }
 
-// Procesar el botón de color pulsado ANTES de pintar
+// se procesa el boton aqui por que si no no va
 if (isset($_POST['color_seleccionado'])) {
     $x = $_SESSION['x'];
     if ($x < $_SESSION['nCirculos']) {

@@ -1,17 +1,19 @@
 <?php
-
-$nombreCookie1='num_circulos';
-$valorCookie1=7;
-$tiempoExpiracion=3600*24;
-setcookie($nombreCookie1,$valorCookie1,[
- 'expires' => $tiempoExpiracion,
- 'path' => '/',
- 'domain' => 'localhost',
- 'secure' => false, // Poner true en producción con HTTPS
- 'httponly' => true, // Inaccesible desde JavaScript (Protección Anti-XSS)
- 'samesite' => 'Lax' // Protección Anti-CSRF
-]);
- 
+  if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
+  $nombreCookie1='num_circulos';
+  $valorCookie1=7;
+  $tiempoExpiracion=3600*24;
+  
+  setcookie($nombreCookie1,$valorCookie1,[
+    'expires' => $tiempoExpiracion,
+    'path' => '/',
+    'domain' => 'localhost',
+    'secure' => false, // Poner true en producción con HTTPS
+    'httponly' => true, // Inaccesible desde JavaScript (Protección Anti-XSS)
+    'samesite' => 'Lax' // Protección Anti-CSRF
+  ]);
 
 ?>
 

@@ -1,33 +1,15 @@
 <?php 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $tiempoExpiracion = 3600*24;
 
-// 1. Configuración de parámetros según el tipo de usuario / procedencia
-if (!isset($_POST['nCirculos']) || !isset($_POST['nColores'])) {
-    // Si entra un usuario normal (o se recarga), leemos la configuración guardada en la base de datos
-    try {
-        $dsn = "mysql:host=localhost;dbname=bdsimon;charset=utf8mb4";
-        $pdo = new PDO($dsn, 'root', '');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// 1. SI EL ADMINISTRADOR ENVÍA EL FORMULARIO DESDE INDEX.PHP
+if (isset($_POST['nCirculos']) && isset($_POST['nColores'])) {
+    $_SESSION['nCirculos'] = (int)$_POST['nCirculos'];
+    $_SESSION['nColores'] = (int)$_POST['nColores'];
 
-        $stmt = $pdo->query("SELECT num_circulos, num_colores FROM configuracion LIMIT 1");
-        $config = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($config) {
-            $_SESSION['nCirculos'] = (int)$config['num_circulos'];
-            $_SESSION['nColores'] = (int)$config['num_colores'];
-        } else {
-            $_SESSION['nCirculos'] = 4;
-            $_SESSION['nColores'] = 4;
-        }
-    } catch (PDOException $e) {
-        $_SESSION['nCirculos'] = 4;
-        $_SESSION['nColores'] = 4;
-    }
-} else {
-    // Si viene del Administrador a través de index.php, guardamos en sesión y actualizamos la BD
-    $_SESSION['nCirculos'] = $_POST['nCirculos'];
-    $_SESSION['nColores'] = $_POST['nColores'];
-
+    // Actualizamos la base de datos
     try {
         $dsn = "mysql:host=localhost;dbname=bdsimon;charset=utf8mb4";
         $pdo = new PDO($dsn, 'root', '');
@@ -40,11 +22,34 @@ if (!isset($_POST['nCirculos']) || !isset($_POST['nColores'])) {
             ':colores'  => $_SESSION['nColores']
         ]);
     } catch (PDOException $e) {
-        // Manejo de errores de actualización si fuera necesario
+        echo "Error al actualizar BD: " . $e->getMessage();
+    }
+} 
+// 2. SI ES UN USUARIO NORMAL (O ENTRA DIRECTO SIN POST), LEEMOS SIEMPRE DE LA BD
+else {
+    try {
+        $dsn = "mysql:host=localhost;dbname=bdsimon;charset=utf8mb4";
+        $pdo = new PDO($dsn, 'root', '');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $stmt = $pdo->query("SELECT num_circulos, num_colores FROM configuracion LIMIT 1");
+        $config = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($config) {
+            $_SESSION['nCirculos'] = (int)$config['num_circulos'];
+            $_SESSION['nColores'] = (int)$config['num_colores'];
+        } else {
+            // por si esta vacia
+            $_SESSION['nCirculos'] = 4;
+            $_SESSION['nColores'] = 4;
+        }
+    } catch (PDOException $e) {
+        $_SESSION['nCirculos'] = 4;
+        $_SESSION['nColores'] = 4;
     }
 }
 
-// 2. Gestión del color de fondo mediante cookies
+// parte de cookies
 if (!empty($_POST['colorFondo'])) {
     setcookie('color_fondo', $_POST['colorFondo'], [
         'expires' => time() + $tiempoExpiracion,
@@ -74,23 +79,19 @@ $colores = array(
     "gris"     => "#808080"
 );
 
-// FORZAMOS LA ACTUALIZACIÓN DE LA PALETA SEGÚN LOS VALORES NUEVOS DE LA SESIÓN/BD
 $_SESSION['paleta_nombres'] = array_slice(array_keys($colores), 0, (int)$_SESSION['nColores']);
 $_SESSION['paleta_hexa']    = array_slice(array_values($colores), 0, (int)$_SESSION['nColores']);
 
 $coloresDef = $_SESSION['paleta_hexa'];
 
-// Combinación aleatoria adaptada al nuevo número de círculos
+// combinacion aleatoria 
 $combinacion_colores = array();
 for ($i = 0; $i < (int)$_SESSION['nCirculos']; $i++) {
     $indiceAleatorio = array_rand($coloresDef);
     $combinacion_colores[] = $coloresDef[$indiceAleatorio];
 }
 
-// Se almacena la combinación secreta en la sesión
 $_SESSION['combinacion_inicial'] = $combinacion_colores;
-
-// REINICIAMOS LOS CÍRCULOS A PINTAR CON EL NUEVO TAMAÑO EXACTO
 $_SESSION['circulos_pintar'] = array_fill(0, (int)$_SESSION['nCirculos'], "#000000");
 $_SESSION['x'] = 0;
 ?>
