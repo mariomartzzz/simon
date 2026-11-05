@@ -15,7 +15,6 @@
 
         echo "<p>Combinación secreta:</p>";
         dibujar_circulos($_SESSION['combinacion_inicial']);
-        session_destroy();
         //aqui irá el update
     ?>
     <form method="get" action="jugar.php">

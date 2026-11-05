@@ -12,7 +12,7 @@ $color_fondo=$_COOKIE['color_fondo'];
         }
     }
 
-    if ($aciertosExactos == $_SESSION['nCirculos']) {
+    if ($_SESSION['aciertosExactos'] == $_SESSION['nCirculos']) {
         header("Location: acierto.php");
     } else {
         header("Location: fallo.php");

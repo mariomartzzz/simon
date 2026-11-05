@@ -18,7 +18,6 @@
 
         echo "<p>Número de aciertos: </p>" . $_SESSION['aciertosExactos'] . "<br>";
         echo "<p>Número de fallos: </p>" . $_SESSION['fallosExactos'] . "<br>";
-        session_destroy();
     ?>
     <form method="get" action="jugar.php">
         <button type="submit">Jugar de nuevo</button><br>
