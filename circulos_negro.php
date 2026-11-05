@@ -1,6 +1,10 @@
 <?php
 include 'dibujar_circulos.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // si no existe se inicializa
 if (!isset($_SESSION['circulos_pintar'])) {
     $_SESSION['circulos_pintar'] = array_fill(0, $_SESSION['nCirculos'], "#000000");

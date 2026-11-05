@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $color_fondo=$_COOKIE['color_fondo'];
 
     $_SESSION['aciertosExactos'] = 0;

@@ -9,7 +9,9 @@
     <h1>Inténtalo otra vez</h1>
     <?php
     include 'dibujar_circulos.php';
-    
+    if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
         echo "<p>Tu combinación:</p>";
         dibujar_circulos($_SESSION['circulos_pintar']);
 

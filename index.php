@@ -7,7 +7,7 @@
   $tiempoExpiracion=3600*24;
   
   setcookie($nombreCookie1,$valorCookie1,[
-    'expires' => $tiempoExpiracion,
+    'expires' => time() + $tiempoExpiracion,
     'path' => '/',
     'domain' => 'localhost',
     'secure' => false, // Poner true en producción con HTTPS

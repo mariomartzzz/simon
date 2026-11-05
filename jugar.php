@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$tiempoExpiracion = 3600*24;
+$tiempoExpiracion = 3600 * 24;
 
 // 1. SI EL ADMINISTRADOR ENVÍA EL FORMULARIO DESDE INDEX.PHP
 if (isset($_POST['nCirculos']) && isset($_POST['nColores'])) {
@@ -22,10 +22,10 @@ if (isset($_POST['nCirculos']) && isset($_POST['nColores'])) {
             ':colores'  => $_SESSION['nColores']
         ]);
     } catch (PDOException $e) {
-        echo "Error al actualizar BD: " . $e->getMessage();
+        // Error silencioso de BD
     }
 } 
-// 2. SI ES UN USUARIO NORMAL (O ENTRA DIRECTO SIN POST), LEEMOS SIEMPRE DE LA BD
+// 2. SI NO VIENE POR POST (USUARIO NORMAL O RECARGA), LEEMOS DE LA BD
 else {
     try {
         $dsn = "mysql:host=localhost;dbname=bdsimon;charset=utf8mb4";
@@ -38,18 +38,21 @@ else {
         if ($config) {
             $_SESSION['nCirculos'] = (int)$config['num_circulos'];
             $_SESSION['nColores'] = (int)$config['num_colores'];
-        } else {
-            // por si esta vacia
-            $_SESSION['nCirculos'] = 4;
-            $_SESSION['nColores'] = 4;
         }
     } catch (PDOException $e) {
-        $_SESSION['nCirculos'] = 4;
-        $_SESSION['nColores'] = 4;
+        // Si falla la BD por lo que sea, asignamos valores por defecto seguros
     }
 }
 
-// parte de cookies
+// 3. BLINDAJE EXTRA: Si por cualquier razón la sesión sigue sin las variables, ponemos un valor por defecto (4)
+if (!isset($_SESSION['nCirculos'])) {
+    $_SESSION['nCirculos'] = 4;
+}
+if (!isset($_SESSION['nColores'])) {
+    $_SESSION['nColores'] = 4;
+}
+
+// GESTIÓN DEL COLOR DE FONDO MEDIANTE COOKIES
 if (!empty($_POST['colorFondo'])) {
     setcookie('color_fondo', $_POST['colorFondo'], [
         'expires' => time() + $tiempoExpiracion,
@@ -79,12 +82,13 @@ $colores = array(
     "gris"     => "#808080"
 );
 
+// Generamos la paleta de manera segura con los enteros de la sesión
 $_SESSION['paleta_nombres'] = array_slice(array_keys($colores), 0, (int)$_SESSION['nColores']);
 $_SESSION['paleta_hexa']    = array_slice(array_values($colores), 0, (int)$_SESSION['nColores']);
 
 $coloresDef = $_SESSION['paleta_hexa'];
 
-// combinacion aleatoria 
+// Combinación aleatoria 
 $combinacion_colores = array();
 for ($i = 0; $i < (int)$_SESSION['nCirculos']; $i++) {
     $indiceAleatorio = array_rand($coloresDef);
