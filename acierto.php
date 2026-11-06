@@ -50,7 +50,6 @@ if (isset($_SESSION['usuario'])) {
 
         echo "<p>Combinación secreta:</p>";
         dibujar_circulos($_SESSION['combinacion_inicial']);
-        //aqui irá el update
     ?>
     <form method="get" action="jugar.php">
         <button type="submit">Jugar de nuevo</button><br>
