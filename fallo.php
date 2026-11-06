@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acierto</title>
 </head>
-<body>
+<body style="background-color: <?=$_COOKIE['color_fondo'];?>;">
     <h1>Inténtalo otra vez</h1>
     <?php
     include 'dibujar_circulos.php';

@@ -40,7 +40,7 @@ if (isset($_SESSION['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acierto</title>
 </head>
-<body>
+<body style="background-color: <?=$_COOKIE['color_fondo'];?>;">
     <h1>Enhorabuena, has ganado.</h1>
     <?php
     include 'dibujar_circulos.php';
