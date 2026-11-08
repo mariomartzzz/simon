@@ -5,11 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 function chkRegistro() {
-    // si no hay usuario se va a acceso
-    if (!isset($_SESSION['usuario'])) {
-        header("Location: acceso.php");
-        exit();
-    }
 
     $host = 'localhost';
     $dbname = 'bdsimon';

@@ -11,7 +11,7 @@ if (!isset($_SESSION['circulos_pintar'])) {
     $_SESSION['x'] = 0;
 }
 
-// se procesa el boton aqui por que si no no va
+// se procesa el boton aqui por que si no, no va
 if (isset($_POST['color_seleccionado'])) {
     $x = $_SESSION['x'];
     if ($x < $_SESSION['nCirculos']) {
@@ -51,7 +51,7 @@ if (isset($_POST['color_seleccionado'])) {
     <?php 
     if ($_SESSION['x'] >= $_SESSION['nCirculos']) {
         echo '<br><form method="POST" action="comprobacion.php">
-                <button type="submit" style="padding: 15px 30px; font-size: 16px; cursor: pointer;">Comprobar Resultado</button>
+                <button type="submit">Comprobar Resultado</button>
               </form>';
     }
     ?>
