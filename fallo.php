@@ -26,6 +26,9 @@
     </form>
     <form method="get" action="acceso.php">
         <button type="submit">Cerrar sesión</button>
+    </form><br><br>
+    <form method="get" action="estadisticas.php">
+        <button type="submit">Ver las estadisticas</button>
     </form>
 </body>
 </html>
