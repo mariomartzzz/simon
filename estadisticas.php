@@ -30,17 +30,17 @@ $estadisticas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>Gráfica</th>
         </tr>
 
-        <?php foreach ($estadisticas as $row): ?>
+        <?php foreach ($estadisticas as $fila){ ?>
             <tr>
-                <td><?php echo $row['Codigo']; ?></td>
-                <td><?php echo $row['Nombre']; ?></td>
-                <td><?php echo $row['total_aciertos']; ?></td>
+                <td><?php echo $fila['Codigo']; ?></td>
+                <td><?php echo $fila['Nombre']; ?></td>
+                <td><?php echo $fila['total_aciertos']; ?></td>
                 <td>
                     <!-- barra  proporcional segun  aciertos -->
-                    <div style="background-color: #007acc; width: <?php echo $row['total_aciertos'] * 10; ?>px; height: 12px;"></div>
+                    <div style="background-color: #007acc; width: <?php echo $fila['total_aciertos'] * 10; ?>px; height: 12px;"></div>
                 </td>
             </tr>
-        <?php endforeach; ?>
+        <?php } ?>
     </table>
     <br>
     <form action="jugar.php" method="GET" style="display:inline;">
